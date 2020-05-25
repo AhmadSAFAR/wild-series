@@ -75,10 +75,7 @@ class WildController extends AbstractController
             throw $this
                   ->createNotFoundException('No category Name has been sent to find a program in program\'s table.');
         }
-        $categoryName=preg_replace(
-            '/-/',
-            ' ',ucwords(trim(strip_tags($categoryName)),"-")
-        );
+       
         $category=$this->getDoctrine()
             ->getRepository(Category::class)
             ->findOneBy(['name'=> mb_strtolower($categoryName)]);
