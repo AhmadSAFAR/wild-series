@@ -1,2 +1,2 @@
-# wild-series
-https://www.loom.com/share/037a58961ec546e895e049cef12645ec
+# pour corriger les quêtes choisissez le branch qui corresponde la quête qui vous voulez corriger.
+
