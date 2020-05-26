@@ -35,13 +35,15 @@
 </a>
 <br>
  <a href="{{ path('show_category', { 'categoryName': "horreur" }) }}">  les 3 dernières séries liées à la catégorie "horreur".</a>
- <h1> Q10 : </h1>
+ <h1> Q11 : </h1>
      <br>
      <a href="{{ path('show_program', { 'programName': "walking-dead" }) }}">L'URL renvoi sur la page de la série "Walking dead"</a>
      </p>
      <a href="{{ path('show_program', { 'programName': "the-haunting-of-hill-house" }) }}">L'URL renvoi sur la page de la série "The Haunting"</a>
      </p>
      <a href="{{ path('show_program', { 'programName': "american-horror-story" }) }}">L'URL renvoi sur la page de la série "American Horror Story"</a>
+         <br>
+   <h1> <a href="{{ path('category_add')}}">Ajouter un category</a></h1>
 {% endblock %}
     
  
