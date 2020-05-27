@@ -1,49 +1,31 @@
 
 <header>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">Accueil</a>
+<nav class="navbar navbar-expand-lg navbar-dark  bg-success ">
+    <a class="navbar-brand " href="/">Accueil</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="wild/">Liste des séries<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/program">Liste des séries<span class="sr-only">(current)</span></a>
             </li>
-            <!--
-            <li class="nav-item">
-                <a class="nav-link" href="#">Item</a>
+            <li class="nav-item active">
+                <a class="nav-link " href="/season">Liste des Seasons</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
+            <li class="nav-item active">
+                <a class="nav-link" href="/episode">Liste des Episodes</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="#">Disabled</a>
             </li>
-            -->
+            
         </ul>
     </div>
 </nav>
 </header>
 {% block body %}
-<a href="{{ path('wild_show', { 'slug': "walking-dead" }) }}">
-    Testing show() method from WildController with a real program s slug.
-</a>
-<br>
-<a href="{{ path('wild_index') }}">
-    Testing index() method from WildController to view all programs.
-</a>
-<br>
- <a href="{{ path('show_category', { 'categoryName': "horreur" }) }}">  les 3 dernières séries liées à la catégorie "horreur".</a>
- <h1> Q11 : </h1>
-     <br>
-     <a href="{{ path('show_program', { 'programName': "walking-dead" }) }}">L'URL renvoi sur la page de la série "Walking dead"</a>
-     </p>
-     <a href="{{ path('show_program', { 'programName': "the-haunting-of-hill-house" }) }}">L'URL renvoi sur la page de la série "The Haunting"</a>
-     </p>
-     <a href="{{ path('show_program', { 'programName': "american-horror-story" }) }}">L'URL renvoi sur la page de la série "American Horror Story"</a>
-         <br>
-   <h1> <a href="{{ path('category_add')}}">Ajouter un category</a></h1>
+
 {% endblock %}
     
  

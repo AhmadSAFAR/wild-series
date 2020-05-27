@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Program index{% endblock %}
+
+{% block body %}
+<h1 class="p-3 mt-5 bg-danger text-white text-center "> liste des séries </h1>
+  <h1 class="text-center"><a  class="btn btn-outline-danger" href="{{ path('program_new') }}">Créer une nouvelle série </a></h1>
+    <table class="table">
+        <thead class="bg-success text-white">
+            <tr >
+                <th >Title</th>
+                <th >Categoru</th>
+                <th>Poster</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody >
+        {% for program in programs %}
+            <tr class="text-success" >
+                <td ><h4>{{ program.title }}</h4></td>
+                <td ><h4>{{ program.category.name }}</h4></td>
+                <td><img src="{{ program.poster }}" alt="5"  width="200" height="200"/></td>
+                <td>
+                    <a  class="btn btn-outline-success" href="{{ path('program_show', {'id': program.id}) }}">show</a><br><br>
+                    <a  class="btn btn-outline-success" href="{{ path('program_edit', {'id': program.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+  
+{% endblock %}
