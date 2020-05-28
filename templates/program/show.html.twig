@@ -38,7 +38,15 @@
         </tbody>
     </table>
 
-    <a class="btn btn-success mt-3" href="{{ path('program_index') }}">back to list</a><br>
+<h1 class="p-3 mt-5 bg-success text-white text-center ">les Acteurs jouent dans  ce séries:</h1>
+<ul>
+    {% for actor in program.actors %}
+        <li><p class="p-3 mt-5 bg-danger text-white text-center ">{{ actor.name }} </p></li>
+    {% else %}
+        <li><p class="p-3 mt-5 bg-danger text-white text-center ">Aucun acteur pour cette série</p></li>
+    {% endfor %}
+</ul>
+    <a class="btn btn-success mt-3 " href="{{ path('program_index') }}">back to list</a><br>
 
     <a class="btn bg-danger mt-3 text-light" href="{{ path('program_edit', {'id': program.id}) }}">edit</a>
 
