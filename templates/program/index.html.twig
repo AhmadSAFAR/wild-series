@@ -21,8 +21,8 @@
                 <td ><h4>{{ program.category.name }}</h4></td>
                 <td><img src="{{ program.poster }}" alt="5"  width="200" height="200"/></td>
                 <td>
-                    <a  class="btn btn-outline-success" href="{{ path('program_show', {'id': program.id}) }}">show</a><br><br>
-                    <a  class="btn btn-outline-success" href="{{ path('program_edit', {'id': program.id}) }}">edit</a>
+                    <a  class="btn btn-outline-success" href="{{ path('program_show', {'slug': program.slug}) }}">show</a><br><br>
+                    <a  class="btn btn-outline-success" href="{{ path('program_edit', {'slug': program.slug}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
