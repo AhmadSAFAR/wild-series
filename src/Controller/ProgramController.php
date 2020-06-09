@@ -10,6 +10,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\component\Mailer\Bridge\Google\Transport\GmailSmtpTransport;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mime\Email;
+use Symfony\Component\Mime\Address;
 
 /**
  * @Route("/program")
@@ -29,7 +35,7 @@ class ProgramController extends AbstractController
     /**
      * @Route("/new", name="program_new", methods={"GET","POST"})
      */
-    public function new(Request $request,Slugify $slugify): Response
+    public function new(Request $request,Slugify $slugify, MailerInterface $mailer): Response
     {
         $program = new Program();
         $form = $this->createForm(ProgramType::class, $program);
@@ -41,6 +47,22 @@ class ProgramController extends AbstractController
             $program->setSlug($slug);
             $entityManager->persist($program);
             $entityManager->flush();
+
+            $email = (new TemplatedEmail())
+            ->from($this->getParameter('mailer_from'))
+            ->to(new Address($this->getParameter('mailer_to')))
+            ->subject('Une nouvelle série vient d\'être publiée !')
+            // path of the Twig template to render
+            ->htmlTemplate('email/notification.html.twig')
+
+           // pass l'object (program) to the template
+           ->context([
+                   'program' => $program,
+                   'slug'=>$slug,
+                    ]);
+            $mailer->send($email);
+            // [...]
+        
 
             return $this->redirectToRoute('program_index');
         }
