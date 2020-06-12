@@ -19,11 +19,18 @@
             <li class="nav-item">
                 <a class="nav-link active" href="/actor">Liste des Actors</a>
             </li>
-            
+          
         </ul>
+
     </div>
 </nav>
 </header>
+   {% if app.user %}
+                <h1> Welcome :{{ app.user.email }}</h1>
+                <a class="btn bg-danger mt-3 text-light" href="{{ path('app_logout') }}">Se déconnecter</a>
+                {% else %}
+                  <a class="btn bg-danger mt-3 text-light" href="{{ path('app_login') }}"> Se connecter</a>
+                    {% endif %}
 {% block body %}
 
 {% endblock %}
