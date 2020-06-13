@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Compte{% endblock %}
+
+{% block body %}
+ <h1 class="bg-success text-white mt-3 text-center">Votre Compte</h1>
+    <div class="text-center">
+        <h2 class="bg-danger text-white">bienvenue: {{ app.user.email }}</h2>
+              <h2 class="bg-danger text-white">bienvenue comme : {{ app.user.bio }}</h2>
+    </div>
+{% endblock %}
