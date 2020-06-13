@@ -4,7 +4,9 @@
 
 {% block body %}
 <h1 class="p-3 mt-5 bg-danger text-white text-center "> liste des séries </h1>
+{% if is_granted('ROLE_ADMIN') %}
   <h1 class="text-center"><a  class="btn btn-outline-danger" href="{{ path('program_new') }}">Créer une nouvelle série </a></h1>
+  {% endif %}
     <table class="table">
         <thead class="bg-success text-white">
             <tr >
@@ -22,7 +24,9 @@
                 <td><img src="{{ program.poster }}" alt="5"  width="200" height="200"/></td>
                 <td>
                     <a  class="btn btn-outline-success" href="{{ path('program_show', {'slug': program.slug}) }}">show</a><br><br>
+                    {% if is_granted('ROLE_ADMIN') %}
                     <a  class="btn btn-outline-success" href="{{ path('program_edit', {'slug': program.slug}) }}">edit</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}

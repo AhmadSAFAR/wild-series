@@ -11,10 +11,13 @@ use App\Form\CategoryType;
 use App\Entity\Category;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class CategoryController extends AbstractController
 {
     /**
+     * @IsGranted("ROLE_ADMIN")
+     *
      * @Route("/category", name="category_add")
      */
     //function pour ajouter des category dans la base et pour traiter le formulaire

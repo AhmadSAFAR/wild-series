@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/episode")
@@ -32,6 +33,7 @@ class EpisodeController extends AbstractController
     }
 
     /**
+     *  @IsGranted("ROLE_ADMIN")
      * @Route("/new", name="episode_new", methods={"GET","POST"})
      */
     public function new(Request $request,Slugify $slugify): Response
@@ -61,6 +63,7 @@ class EpisodeController extends AbstractController
      */
     public function show(Episode $episode,Request $request, ?UserInterface $author): Response
     {
+      
         $comment=new Comment();
         $comment->setEpisode($episode);
         $comment->setAuthor($author);
@@ -79,6 +82,7 @@ class EpisodeController extends AbstractController
     }
 
     /**
+     *  @IsGranted("ROLE_ADMIN")
      * @Route("/{slug}/edit", name="episode_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Episode $episode,Slugify $slugify): Response
@@ -101,6 +105,7 @@ class EpisodeController extends AbstractController
     }
 
     /**
+     *  @IsGranted("ROLE_ADMIN")
      * @Route("/{id}", name="episode_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Episode $episode): Response

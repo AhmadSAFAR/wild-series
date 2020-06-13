@@ -4,7 +4,9 @@
 
 {% block body %}
    <h1 class="p-3 mt-5 bg-danger text-white text-center "> liste des Actors </h1>
+   {% if is_granted('ROLE_ADMIN') %}
       <h1 class="text-center"> <a class="btn btn-outline-danger"  href="{{ path('actor_new') }}">Créer un nouveau actor </a></h1>
+      {% endif %}
 
     <table class="table">
         <thead class="bg-success text-white">
@@ -19,7 +21,9 @@
                 <td>{{ actor.name }}</td>
                 <td>
                     <a  class="btn btn-outline-success" href="{{ path('actor_show', {'slug': actor.slug}) }}">show</a>
+                    {% if is_granted('ROLE_ADMIN') %}
                     <a  class="btn btn-outline-success" href="{{ path('actor_edit', {'slug': actor.slug}) }}">edit</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}

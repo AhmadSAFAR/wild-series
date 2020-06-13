@@ -12,23 +12,8 @@
         {% include "navbar.html.twig" %}
     {% endblock %}
  {% block body %}
- <h1 class="bg-success text-center text-danger" >(Q19)</h1>
-<h1 class="text-light bg-success text-center">Wild Séries Collection</h1>
-    <div class="row row-cols-1 row-cols-md-2 pl-5">
-   {% for program in programs %}
-  <div class="col mb-4">
-    <div class="card col-9">
-    <img src="{{ program.poster }}" class="card-img-top " alt="img" width="200" height="200" >
-    <div class="card-body">
-      <h5 class="card-title">{{ program.title }}</h5>
-      <p class="card-text ">{{ program.summery }}</p>
-      <p class="card text-light bg-success text-center"><small class="text-muted"></small>{{ program.category.name }}</p>
-  </div>
-  </div>
-  </div>
+ <h1 class="bg-success text-center text-danger" >(Q20)</h1>
 
- {% endfor %}
-      </div>
  {% endblock %}
         {% block javascripts %}
          {{ encore_entry_script_tags('app') }}

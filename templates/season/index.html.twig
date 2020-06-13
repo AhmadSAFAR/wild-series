@@ -4,7 +4,9 @@
 
 {% block body %}
     <h1 class="p-3 mt-5 bg-danger text-white text-center "> les Season</h1>
+    {% if is_granted('ROLE_ADMIN') %}
  <h1 class="text-center"><a class="btn btn-outline-danger" href="{{ path('season_new') }}">Create new</a></h1>
+ {% endif %}
 
     <table class="table">
         <thead class="bg-success text-white">
@@ -23,7 +25,9 @@
                 <td>{{ season.description }}</td>
                 <td>
                     <a  class="btn btn-outline-success" href="{{ path('season_show', {'id': season.id}) }}">show</a>
+                    {% if is_granted('ROLE_ADMIN') %}
                     <a  class="btn btn-outline-success mt-2" href="{{ path('season_edit', {'id': season.id}) }}">edit</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
