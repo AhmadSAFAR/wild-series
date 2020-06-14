@@ -12,7 +12,7 @@
             <tr >
                 <th >Title</th>
                 <th >Categoru</th>
-                <th>Poster</th>
+                <th>actor</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -21,7 +21,15 @@
             <tr class="text-success" >
                 <td ><h4>{{ program.title }}</h4></td>
                 <td ><h4>{{ program.category.name }}</h4></td>
-                <td><img src="{{ program.poster }}" alt="5"  width="200" height="200"/></td>
+                <td>     <ul>
+                                {% for actor in program.actors %}
+                                    <li>
+                                        {{ actor.name }}
+                                    </li>
+                                {% else %}
+                                    Aucun acteur
+                                {% endfor %}
+                            </ul></td>
                 <td>
                     <a  class="btn btn-outline-success" href="{{ path('program_show', {'slug': program.slug}) }}">show</a><br><br>
                     {% if is_granted('ROLE_ADMIN') %}
