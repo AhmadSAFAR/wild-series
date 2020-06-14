@@ -11,8 +11,16 @@
     {% block header %}
         {% include "navbar.html.twig" %}
     {% endblock %}
+     {% for label, messages in app.flashes(['success', 'danger']) %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
  {% block body %}
- <h1 class="bg-success text-center text-danger" >(Q22)</h1>
+
+ <h1 class="bg-success text-center text-danger" >(Q23)</h1>
 <h1 class="text-light bg-success text-center">Wild Séries Collection</h1>
     <div class="row row-cols-1 row-cols-md-2 pl-5">
    {% for program in programs %}
@@ -26,7 +34,6 @@
   </div>
   </div>
   </div>
-
  {% endfor %}
       </div>
  {% endblock %}
